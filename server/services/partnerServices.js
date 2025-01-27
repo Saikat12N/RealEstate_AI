@@ -24,11 +24,10 @@ partnerServices.addPartner = async (newPartner) => {
       };
       const createPartner = new partnerModel(newPartnerData);
       const savedPartner = await createPartner.save();
-
       return {
         success: true,
         message: "Partner created successfully",
-        data: { ...savedPartner, password: "XXXX-XXXX" },
+        data: { ...savedPartner.toObject(), password: "XXXX-XXXX" },
       };
     }
   } catch (error) {
